@@ -1,0 +1,29 @@
+name: End-to-end tests
+on: [push]
+jobs:
+  cypress-run:
+    runs-on: windows-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        containers: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
+    steps:
+    - name: Checkout
+      uses: actions/checkout@v3
+    - name: Use Node.js
+      uses: actions/setup-node@v3
+      with:
+        node-version: '16.x'
+    - name: Install dependencies
+      run: npm install
+    - name: Cypress run
+      uses: cypress-io/github-action@v4
+      with:
+          browser: chrome
+          headed: true
+          record: true
+          parallel: true
+          group: 'A, B'
+      env:
+          CYPRESS_RECORD_KEY: '3d3cd219-1190-4e62-81fe-4b4448f6278c'
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
