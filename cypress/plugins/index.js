@@ -126,7 +126,7 @@ function getFileChecksum(file){
 const {downloadFile} = require('cypress-downloadfile/lib/addPlugin')
 
 
-
+const tagify = require('cypress-tags');
 const readXlsx = require('./read-xlsx')
 
 	module.exports = (on, config) => {
