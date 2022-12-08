@@ -4,14 +4,9 @@ jobs:
   cypress-run:
     runs-on: windows-latest
     strategy:
-      # when one test fails, DO NOT cancel the other
-      # containers, because this will kill Cypress processes
-      # leaving Cypress Cloud hanging ...
-      # https://github.com/cypress-io/github-action/issues/48
       fail-fast: false
       matrix:
-        # run 3 copies of the current job in parallel
-        containers: [1]
+        containers: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
     steps:
     - name: Checkout
       uses: actions/checkout@v3
@@ -27,10 +22,8 @@ jobs:
           browser: chrome
           headed: true
           record: true
-          parallel: false
+          parallel: true
           group: 'A, B'
       env:
-          # pass the Cypress Cloud record key as an environment variable
-          CYPRESS_RECORD_KEY: '1ebdf1a1-71ba-4dd1-b3f5-5365ba5b922e'
-          # pass GitHub token to allow accurately detecting a build vs a re-run build
+          CYPRESS_RECORD_KEY: '3d3cd219-1190-4e62-81fe-4b4448f6278c'
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
