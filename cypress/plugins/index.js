@@ -273,7 +273,8 @@ const readXlsx = require('./read-xlsx')
 		
     
 
-  })
+  }),
+  on('file:preprocessor', tagify(config));
 
 
 

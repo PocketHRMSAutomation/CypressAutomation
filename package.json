@@ -44,6 +44,7 @@
     "crypto-js": "^4.0.0",
     "cypress-downloadfile": "^1.1.5",
     "cypress-iframe": "^1.0.1",
+    "cypress-tags": "^1.1.2",
     "file-system": "^2.2.2",
     "fs-extra": "^8.1.0",
     "gaxios": "^4.1.0",
