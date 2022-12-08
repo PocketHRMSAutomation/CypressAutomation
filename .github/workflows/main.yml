@@ -3,10 +3,6 @@ on: [push]
 jobs:
   cypress-run:
     runs-on: windows-latest
-    strategy:
-      fail-fast: false
-      matrix:
-        containers: [1, 2]
     steps:
     - name: Checkout
       uses: actions/checkout@v3
@@ -22,8 +18,6 @@ jobs:
           browser: chrome
           headed: true
           record: true
-          parallel: true
-          group: 'A, B'
       env:
           CYPRESS_RECORD_KEY: '3d3cd219-1190-4e62-81fe-4b4448f6278c'
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
