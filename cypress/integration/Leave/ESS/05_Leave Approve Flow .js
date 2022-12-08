@@ -2,7 +2,7 @@ import { get } from 'request';
 import Leave from '../../Function/Leave'
 
 
-describe('05_Leave Approve Flow', function () {
+describe(['Smoke'], '05_Leave Approve Flow', function () {
 	const leave = new Leave()
 
 
@@ -68,7 +68,7 @@ describe('05_Leave Approve Flow', function () {
 	var pass = ''
 
 	function getPassword(empid) {
-		
+
 		cy.readFile('cypress/fixtures/Password.json').then((data) => {
 			data.forEach(function (entry) {
 				//cy.log(entry)
@@ -76,22 +76,22 @@ describe('05_Leave Approve Flow', function () {
 				//var pass = entry.password
 				//cy.log(dd)
 				//cy.log(employeeID)
-				var a1 = emp.trim() 
+				var a1 = emp.trim()
 				var a2 = empid.trim()
-				
-				if (a1 == a2 ) {
+
+				if (a1 == a2) {
 					cy.log("HIIIIIIIIIIIIIIIIIIIIIIIII")
-					 pass =  entry.password
+					pass = entry.password
 					cy.log("pass:" + pass)
 					//return pass
-					
+
 					//return pass;
 				}
 			})
 		})
 		//cy.log("pass:" + pass)
 		//return pass;
-return pass;
+		return pass;
 	}
 
 	before(() => {
@@ -103,16 +103,16 @@ return pass;
 		cy.getCookies_ESS()
 	})
 
-/*	it('getPassword', function () {
-		pass = getPassword(employeeID)
-		cy.log(pass)
-		//cy.EssLogin(employeeID, pass)
-
-	})
-*/
+	/*	it('getPassword', function () {
+			pass = getPassword(employeeID)
+			cy.log(pass)
+			//cy.EssLogin(employeeID, pass)
+	
+		})
+	*/
 
 	it('Apply Leave', function () {
-		 pass = getPassword(employeeID)
+		pass = getPassword(employeeID)
 		cy.EssLogin(employeeID, pass)
 		leave.applyLeave(leaveType, balance, leaveDay, leaveFromDate, leaveToDate, leaveFromDayType,
 			leaveToDayType, Reason, LeaveStation, VacationAddress, ContactNumber, ReliverCode,
