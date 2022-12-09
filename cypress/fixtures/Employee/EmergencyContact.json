@@ -1,0 +1,16 @@
+{
+  "rows": [
+    {
+      "Name": "Rupali",
+      "Address": "MIDC Main Rd, Indira Nagar, Turbhe, Navi Mumbai",
+      "Relation": "Friend",
+      "ContactNumber": 9876543210
+    },
+    {
+      "Name": "Reshma",
+      "Address": "Ratnagiri",
+      "Relation": "Sister",
+      "ContactNumber": 9988776650
+    }
+  ]
+}

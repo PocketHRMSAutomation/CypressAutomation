@@ -1,0 +1,32 @@
+{
+  "rows": [
+    {
+      "PersonalEmailId": "swa@gmail.com"
+    },
+    {
+      "PersonalEmailId": "swa@gmail.com",
+      "Remarks": "Fresher",
+      "Phone": 9876543210,
+      "BloodGroup": "A+",
+      "Address1": "Ratnagiri",
+      "Address2": "Thane",
+      "Place": "Turbhe",
+      "City": "Mumbai",
+      "PINCode": 415612,
+      "EmailId": "swati@gmail.com",
+      "PrintCheque": "No",
+      "BankAccountNumber": 876540,
+      "BankBranchCode": 32145,
+      "CorrespondenceAddress1": "Mumbai",
+      "CorrespondenceAddress2": "Thane",
+      "CorrespondencePlace": "Delhi",
+      "CorrespondenceCity": "New Delhi",
+      "CorrespondencePhone": 9876054670,
+      "CorrespondencePinCode": 654780,
+      "PersonalMobileNo": 9123456780,
+      "OfficeMobileNo": 234567,
+      "OfficeExtensionNo": "022",
+      "Handicap": "No"
+    }
+  ]
+}

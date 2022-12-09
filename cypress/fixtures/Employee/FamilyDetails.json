@@ -1,0 +1,28 @@
+{
+  "rows": [
+    {
+      "__EMPTY": "For Add",
+      "Name": "Ram",
+      "Address": "Ratnagiri",
+      "Relation": "Father",
+      "DateOfBirth": "04/03/2000",
+      "AadhaarOrIdentificationNo": "2515478251022"
+    },
+    {
+      "__EMPTY": "For Edit",
+      "Name": "Rani",
+      "Address": "Mumbai",
+      "Relation": "Sister",
+      "DateOfBirth": "04/09/2003",
+      "AadhaarOrIdentificationNo": "2515478251564"
+    },
+    {
+      "__EMPTY": "For Validation",
+      "Name": "Raj",
+      "Address": "Pune",
+      "Relation": "Brother",
+      "DateOfBirth": "24/06/2000",
+      "AadhaarOrIdentificationNo": "2515478250001"
+    }
+  ]
+}
