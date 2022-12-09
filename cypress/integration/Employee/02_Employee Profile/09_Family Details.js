@@ -122,9 +122,10 @@ describe('09_Family Details', function() {
 
 		//Click on Add button
 		cy.get('[title="Add Family Details"]').eq(0).click({force: true})	
-		cy.wait(1000)
+		cy.wait(3000)
 		//Select Relation
 		cy.get('#Relation').select(Relation)
+		cy.wait(1000)
 		//Enter Name
 		cy.get('#Name').click({force: true})
 		cy.get('#Name').clear()

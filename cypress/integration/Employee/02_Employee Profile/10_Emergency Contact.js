@@ -151,7 +151,7 @@ describe('10_Emergency Contact', function() {
 		cy.wait(5000)
 		//Click on Add button
 		cy.get('[title="Add Emergency Contacts"]').eq(0).click({force: true})
-		cy.wait(1000)
+		cy.wait(3000)
 
 		cy.get('#Name').click({force: true})
 		cy.get('#Name').clear()

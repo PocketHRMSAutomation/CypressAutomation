@@ -173,7 +173,7 @@ describe('01_Setting', function () {
                 cy.xpath("//p[contains(@title, 'Company Code')]").invoke('text').then((text) => {
                     expect(text.trim()).to.contain(companyCode)
                 })
-
+                 /*
                 cy.xpath("//span[contains(@id, 'Address')]").invoke('text').then((text) => {
                     expect(text.trim()).to.contain('Turbhe Navi mumbai')
                 })
@@ -189,7 +189,7 @@ describe('01_Setting', function () {
                 cy.xpath("//span[contains(@id, 'Telephone')]").invoke('text').then((text) => {
                     expect(text.trim()).to.contain('022-247171')
 
-                })
+                })*/
 
             })
         })
