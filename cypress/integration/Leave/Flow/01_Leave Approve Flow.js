@@ -64,77 +64,69 @@ describe(['Flow'], '05_Leave Approve Flow', function () {
 	var ManagerFirstName_2 = ' '
 	var ManagerLastName_2 = ''
 
-	var pass = ''
+	var password = ''
+	function logout() {
 
-	function getPassword(empid) {
+		cy.get('.notification > :nth-child(4) > .nav-link').click({ force: true })
+		cy.get('[href="/Account/SignOut"]').click({ force: true })
+	}
 
-		cy.readFile('cypress/fixtures/Password.json').then((data) => {
-			data.forEach(function (entry) {
-				//cy.log(entry)
+	Cypress.Commands.add('getPassword', (empid) => {
+		cy.fixture('Password').then(testdata => {
+			testdata.forEach(function (entry) {
+
 				var emp = entry.employeeid
-				//var pass = entry.password
-				//cy.log(dd)
-				//cy.log(employeeID)
 				var a1 = emp.trim()
 				var a2 = empid.trim()
-
 				if (a1 == a2) {
-					cy.log("HIIIIIIIIIIIIIIIIIIIIIIIII")
-					pass = entry.password
-					cy.log("pass:" + pass)
-					//return pass
-
-					//return pass;
+					password = entry.password
+					cy.log("pass:" + password)
 				}
 			})
 		})
-		//cy.log("pass:" + pass)
-		//return pass;
-		return pass;
-	}
-
-	before(() => {
-		//const filename = Password.json'
 	})
+
 
 	beforeEach(function () {
 		cy.getCookies()
 		cy.getCookies_ESS()
 	})
 
-	/*	it('getPassword', function () {
-			pass = getPassword(employeeID)
-			cy.log(pass)
-			//cy.EssLogin(employeeID, pass)
-	
-		})
-	*/
+	it('Get Password', function () {
+		cy.getPassword(employeeID)
+	})
 
-	it('Apply Leave', function () {
-		pass = getPassword(employeeID)
-		cy.EssLogin(employeeID, pass)
+/*	it('Apply Leave', function () {
+		cy.EssLogin(employeeID, password)
 		leave.applyLeave(leaveType, balance, leaveDay, leaveFromDate, leaveToDate, leaveFromDayType,
 			leaveToDayType, Reason, LeaveStation, VacationAddress, ContactNumber, ReliverCode,
 			ReliverSetting)
 	})
-
-	it('Verify Leave details in Leave popup of Previous Leave', function () {
+*/
+	it('Verify Leave details in Leave popup of Previous Leave', async function () {
 		var ManagerStatus_1 = 'Pending'
 		var ManagerRemark_1 = ''
-		//cy.EssLogin(employeeID, employeeID)
-		//cy.visit(Cypress.env('essUrl') + 'Leave/Transaction/LeaveRequest?Menu=leave')
-		leave.verifyLeaveDetails(employeeID, EmployeeFirstName, EmployeeLastName, managerID,
-			ManagerFirstName, ManagerLastName, department, designation, employeeJoiningDate, todayDate,
-			leaveType, leaveTypeValue, balance, leaveFromDate, leaveToDate, leaveFromDayType,
-			leaveToDayType, Reason, LeaveStation, VacationAddress, ContactNumber, ReliverCode, ReliverName,
-			APPROVERS, ManagerRemark_1, ReliverSetting, leaveDay, ManagerLevel, managerID_2, ManagerFirstName_2,
-			ManagerLastName_2, ManagerRemark_2, LeaveStatus, ManagerStatus_1, ManagerStatus_2)
+			//cy.EssLogin(employeeID, employeeID)
+			cy.EssLogin(employeeID, password)
+			cy.visit(Cypress.env('essUrl') + 'Leave/Transaction/LeaveRequest?Menu=leave')
+			 leave.verifyLeaveDetails(employeeID, EmployeeFirstName, EmployeeLastName, managerID,
+				ManagerFirstName, ManagerLastName, department, designation, employeeJoiningDate, todayDate,
+				leaveType, leaveTypeValue, balance, leaveFromDate, leaveToDate, leaveFromDayType,
+				leaveToDayType, Reason, LeaveStation, VacationAddress, ContactNumber, ReliverCode, ReliverName,
+				APPROVERS, ManagerRemark_1, ReliverSetting, leaveDay, ManagerLevel, managerID_2, ManagerFirstName_2,
+				ManagerLastName_2, ManagerRemark_2, LeaveStatus, ManagerStatus_1, ManagerStatus_2)
+
+	})
+
+	it('setPassword', function () {
+		logout()
+		cy.getPassword(managerID)
 	})
 
 	it('Verify Notification at Manager ', function () {
-		pass = getPassword(managerID)
-		cy.EssLogin(managerID, pass)
-		cy.wait(5000)
+		cy.EssLogin(managerID, password)
+		//cy.EssLogin(managerID, managerID)
+		//logout()
 		leave.verifyNotificationAtManager(employeeID)
 	})
 
@@ -180,20 +172,18 @@ describe(['Flow'], '05_Leave Approve Flow', function () {
 			ManagerLastName_2, ManagerRemark_2, LeaveStatus, ManagerStatus_1, ManagerStatus_2)
 	})
 
+
 	it('Verify Notification at Employee', function () {
-		pass = getPassword(employeeID)
-		cy.EssLogin(employeeID, pass)
+		//pass = getPassword(employeeID)
+		cy.EssLogin(employeeID, getPassword(employeeID))
 		//cy.EssLogin(employeeID, employeeID)
 		leave.verifyNotificationAtEmployee(employeeID, LeaveStatus)
-
-
 	})
 
 	it('Verify Status at Employee after Approved Leave', function () {
 		balance = balance - leaveDay
 		//cy.EssLogin(employeeID, employeeID)
 		leave.verifyStatusAtEmployee(leaveFromDate, LeaveStatus)
-
 	})
 
 	it('Verify Leave details in Leave popup of Previous Leave After Approved Leave', function () {
@@ -232,13 +222,13 @@ describe(['Flow'], '05_Leave Approve Flow', function () {
 
 	})
 
-	it('Verify Leave details in Leave popup of Employee Report', function () {
-		leave.verifyLeaveDetails(employeeID, EmployeeFirstName, EmployeeLastName, managerID,
-			ManagerFirstName, ManagerLastName, department, designation, employeeJoiningDate, todayDate,
-			leaveType, leaveTypeValue, balance, leaveFromDate, leaveToDate, leaveFromDayType,
-			leaveToDayType, Reason, LeaveStation, VacationAddress, ContactNumber, ReliverCode, ReliverName,
-			APPROVERS, ManagerRemark_1, ReliverSetting, leaveDay, ManagerLevel, managerID_2, ManagerFirstName_2,
-			ManagerLastName_2, ManagerRemark_2, LeaveStatus, ManagerStatus_1, ManagerStatus_2)
-	})
-
+	/*	it('Verify Leave details in Leave popup of Employee Report', function () {
+			leave.verifyLeaveDetails(employeeID, EmployeeFirstName, EmployeeLastName, managerID,
+				ManagerFirstName, ManagerLastName, department, designation, employeeJoiningDate, todayDate,
+				leaveType, leaveTypeValue, balance, leaveFromDate, leaveToDate, leaveFromDayType,
+				leaveToDayType, Reason, LeaveStation, VacationAddress, ContactNumber, ReliverCode, ReliverName,
+				APPROVERS, ManagerRemark_1, ReliverSetting, leaveDay, ManagerLevel, managerID_2, ManagerFirstName_2,
+				ManagerLastName_2, ManagerRemark_2, LeaveStatus, ManagerStatus_1, ManagerStatus_2)
+		})
+	*/
 })
