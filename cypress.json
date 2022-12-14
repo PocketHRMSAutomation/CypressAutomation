@@ -7,6 +7,23 @@
   "video": true,
   "chromeWebSecurity":false,
   "numTestsKeptInMemory": 0 ,
+
+
+  "testFiles": [
+    
+    "BasicSetting//*",
+    "Employee//01_Setting//*",
+    "Employee//02_EmployeeProfile//*",
+    "Employee//03_Asset//*",
+    "Leave//Setting//*",
+    "Leave//Cloud//*",
+    "Leave//ESS//*",
+    "Leave//Flow//*",
+    "Attendance//Setting//*",
+    "Attendance//Flow//*"
+
+
+  ],
  
   "env": {
 

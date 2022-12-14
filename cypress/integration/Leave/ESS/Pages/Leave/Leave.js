@@ -2,6 +2,7 @@
 
 class Leave {
 
+
 	verifyLeaveDetails(employeeID, EmployeeFirstName, EmployeeLastName, managerID,
 		ManagerFirstName, ManagerLastName, department, designation, employeeJoiningDate, todayDate,
 		leaveType, leaveTypeValue, balance, leaveFromDate, leaveToDate, leaveFromDayType,
@@ -318,8 +319,8 @@ class Leave {
 
 	verifyNotificationAtManager(employeeID) {
 		var moment = require('moment');
-		//cy.get('#empCount').click();
-		cy.get('[style="position:relative;"] > .nav-link > .fa').click({force:true});
+		cy.get('#empCount').click();
+		cy.wait(2000)
 
 
 		const addTen = moment().add(10, 'minutes').calendar()
@@ -464,7 +465,7 @@ class Leave {
 
 
 								cy.xpath("//button[contains(text(),'Save')]").click({ force: true })
-								cy.wait(1000)
+								cy.wait(4000)
 								cy.get(".noty_body").invoke('text').then((text) => {
 
 									softExpect(text.trim()).to.eq("Records are processed in background, please wait!");
@@ -578,6 +579,8 @@ class Leave {
 
 	}
 
+
+
 	verifyNotificationAtReliver(employeeID, EmployeeFirstName, EmployeeLastName, leaveFromDate, leaveToDate) {
 		const { softAssert, softExpect, softTrue } = chai;
 		var moment = require('moment');
@@ -656,6 +659,21 @@ class Leave {
 		//cy.get('#leavedetails_Tab').click();
 		cy.wait(3000)
 
+		
+
+		cy.get('#StartDate').click().then(input => {
+			input[0].dispatchEvent(new Event('input', { bubbles: true }))
+			input.val(leaveFromDate)
+		})
+
+		
+		cy.get('#EndDate').click().then(input => {
+			input[0].dispatchEvent(new Event('input', { bubbles: true }))
+			input.val(leaveToDate)
+		})
+
+		cy.get('#searchbtn').eq(0).click()
+
 		cy.get('#ESRtableSorter> tbody > tr').each(function (row, i) {
 			var num = parseFloat(i + 1)
 
@@ -714,6 +732,10 @@ class Leave {
 		cy.get('input[type="search"]').click({ force: true })
 		cy.get('input[type="search"]').type(employeeID)
 		cy.contains('li', '[' + employeeID + ']').click({ force: true })
+
+	
+
+
 
 		cy.get('#searchbtn').click({ force: true })
 		cy.wait(1000)

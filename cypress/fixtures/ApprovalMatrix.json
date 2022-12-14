@@ -1,12 +1,26 @@
 {
   "rows": [
     {
+      "EmployeeCode": "L1",
+      "LeaderCode": "L2",
+      "Priority": 1,
+      "ModuleName": "Leave",
+      "ApprovalMust": "Yes",
+      "ApprovedCancelRights": "Yes"
+    },
+    {
       "EmployeeCode": "Z1",
       "LeaderCode": "Z2",
       "Priority": 1,
       "ModuleName": "Leave",
       "ApprovalMust": "Yes",
       "ApprovedCancelRights": "Yes"
+    },
+    {
+      "EmployeeCode": "Z2",
+      "LeaderCode": "Z1",
+      "Priority": 1,
+      "ModuleName": "OnDuty"
     }
   ]
 }
