@@ -14,6 +14,20 @@
     "Attendance//Setting//*",
     "Attendance//Flow//*"
   ],
+  "chromeWebSecurity": false,
+  "numTestsKeptInMemory": 0,
+  "testFiles": [
+    "BasicSetting//*",
+    "Employee//01_Setting//*",
+    "Employee//02_EmployeeProfile//*",
+    "Employee//03_Asset//*",
+    "Leave//Setting//*",
+    "Leave//Cloud//*",
+    "Leave//ESS//*",
+    "Leave//Flow//*",
+    "Attendance//Setting//*",
+    "Attendance//Flow//*"
+  ],
   "env": {
     "_url": "http://192.168.0.249:8027/",
     "__url": "https://pockethrmscloud.azurewebsites.net/",

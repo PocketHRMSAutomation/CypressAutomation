@@ -33,6 +33,7 @@ var userPass = '123456'
 // Cypress.Commands.overwrite("visit", (originalFn, url, options) => { ... })
 import 'cypress-wait-until';
 import 'cypress-iframe';
+import 'cypress-file-upload';
 
 
 Cypress.Commands.add('uploadFile', { prevSubject: true }, (subject, fileName) => {
@@ -155,7 +156,7 @@ Cypress.Commands.add('navigate_EmployeeProfile', (empID) => {
 	cy.wait(3000)
 })
 
-
+/*
 Cypress.Commands.add('EssLogin', (empID, pwd) => {
 
 	cy.visit(Cypress.env('essUrl'))
@@ -215,6 +216,53 @@ Cypress.Commands.add('EssLogin', (empID, pwd) => {
 		})
 	})
 
+})
+*/
+
+Cypress.Commands.add('EssLogin', (empID, pwd) => {
+    cy.visit(Cypress.env('essUrl'))
+    cy.get("body").then($body => {
+        if ($body.find('[onclick="return newSinIn()"]').length > 0) {
+            cy.get('[onclick="return newSinIn()"]').click({ force: true })
+        }
+    });
+    cy.readFile('cypress/fixtures/Company.json').then((text) => {
+        text.forEach(function (entry) {
+            var comapnaycode = entry.comapnaycode
+            cy.log('comapnaycode ' + comapnaycode)
+            cy.get('#CompanyCode').click({ force: true })
+            cy.get('#CompanyCode').clear();
+            cy.get('#CompanyCode').type(comapnaycode)
+            cy.get('#EmployeeCode').click({ force: true })
+            cy.get('#EmployeeCode').clear();
+            cy.get('#EmployeeCode').type(empID)
+            // cy.get('#Password').click({ force: true })
+            // cy.get('#Password').clear();
+            // cy.get('#Password').type(pwd)
+            cy.fixture('Password').then(testdata => {
+                testdata.forEach(function (entry) {
+                    var emp = entry.employeeid
+                    var a1 = emp.trim()
+                    var a2 = empID.trim()
+                    if (a1 == a2) {
+                        //debugger;
+                        var pass = entry.password
+                        cy.log("pass:" + pass)
+                        cy.get('#Password').click({ force: true })
+                        cy.get('#Password').clear();
+                        cy.get('#Password').type(pass)
+                    }
+                })
+            })
+            cy.get('.btn').click({ force: true })
+            cy.url().should('contains', '/Home/Dashboard');
+        })
+    })
+})
+
+Cypress.Commands.add('logout', (empID, pwd) => {
+    cy.get('.notification > :nth-child(4) > .nav-link').click({ force: true })
+    cy.get('[href="/Account/SignOut"]').click({ force: true })
 })
 
 

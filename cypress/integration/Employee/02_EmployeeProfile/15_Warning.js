@@ -25,7 +25,7 @@ describe('Warning page', () =>{
 
 context ('Verify Warning tab',() => {
 
-it('To check Warning tab is working propely or not',() => {
+  it('To check Warning tab is working propely or not',() => {
    
     //click on appreciation tab 
     cy.get('#Profile_Warning').click({force:true})
@@ -42,7 +42,7 @@ it('To check Warning tab is working propely or not',() => {
 
 context ('Verify all validation messages',() => {
    
-it('Verify appreciation pop-up will open or not',() => {
+     it('Verify appreciation pop-up will open or not',() => {
         //click on add appreciation button(+)
         cy.get('[title="Add Warning"]').eq(0).click()
         cy.wait(1000)
@@ -54,7 +54,7 @@ it('Verify appreciation pop-up will open or not',() => {
     })
 
 
- it('verify valdation massage for Warning Subject', () => {
+    it('verify valdation massage for Warning Subject', () => {
 
     //1)blank form
     cy.get('#btnProcess').click()
@@ -65,9 +65,9 @@ it('Verify appreciation pop-up will open or not',() => {
     })
     //click on message to close message box
     cy.get(".toast-message").click()
- })
+    })
 
- it('verify valdation massage for Warning Date!', () => {
+   it('verify valdation massage for Warning Date!', () => {
     //2)only fill Appreciation Subject
     //Enter Appreciation subject
     cy.get('#subject').type('sonali')
@@ -79,9 +79,9 @@ it('Verify appreciation pop-up will open or not',() => {
     })
     //click on message to close message box
     cy.get(".toast-message").click()
- })
+   })
 
- it('verify valdation massage for Warning Brief!', () => {   
+  it('verify valdation massage for Warning Brief!', () => {   
     //3)fill Appreciation Date
      //Enter date
     cy.get('#WDate').click().then(input =>
@@ -96,9 +96,9 @@ it('Verify appreciation pop-up will open or not',() => {
     })
     //click on message to close message box
     cy.get(".toast-message").click()
-    })
+  })
 
- it('verify valdation massage for Letter Number!', () => { 
+    it('verify valdation massage for Letter Number!', () => { 
     //4)ill brief descriptionf
     cy.get('#brief_ifr').then(function($iframe){
         const iframecontent = $iframe.contents().find('body')
@@ -116,9 +116,9 @@ it('Verify appreciation pop-up will open or not',() => {
     })
     //click on message to close message box
     cy.get(".toast-message").click()
- })
+    })
 
- it('verify valdation massage for Letter Number Only!', () => { 
+    it('verify valdation massage for Letter Number Only!', () => { 
      //5) fill incorrect letter number
      cy.get('#ltrNo').type('6545lk')
      //click on save
@@ -131,7 +131,7 @@ it('Verify appreciation pop-up will open or not',() => {
       cy.get(".toast-message").click()
     })
 
-it('verify valdation massage for Issued By!', () => { 
+    it('verify valdation massage for Issued By!', () => { 
     //6)fill correct letter number
     cy.get('#ltrNo').type(3946)
     //click on save
@@ -142,10 +142,10 @@ it('verify valdation massage for Issued By!', () => {
     })
      //click on message to close message box
      cy.get(".toast-message").click()
- })
+    })
 
 
-it('verify verify success massage for Data saved successfully',() => {
+    it('verify verify success massage for Data saved successfully',() => {
      //7)fill issued by
      cy.get('#issuedBy').type('ramesh')
 
@@ -162,7 +162,7 @@ it('verify verify success massage for Data saved successfully',() => {
      })
 
      
-it('verify validation message for duplicate record ', () => {
+     it('verify validation message for duplicate record ', () => {
         cy.get('[title="Add Warning"]').eq(0).click()
   
         //edit appreciation subject text field
@@ -206,12 +206,12 @@ it('verify validation message for duplicate record ', () => {
 
     })
 
- })
+})
 
 context ('Verify for add fucationality With Attach file',() => {
 
 
-    it('can add all fields (attach file)', () => {
+ it('can add all fields (attach file)', () => {
         cy.get('[title="Add Warning"]').eq(0).click()
   
         //edit appreciation subject text field
@@ -270,7 +270,7 @@ context ('Verify for add fucationality With Attach file',() => {
      //click on message to close message box
      cy.get(".toast-message").click()
      cy.wait(2000)
-    })
+ })
     
     it('can download the attched file',() => {
         //click on download button
@@ -396,11 +396,12 @@ context ('Verify for Edit funcationality',() => {
     
     })
     
-    })
+})
+
 
 context ('Verify for delete funcationality',() => { 
 
-it('can deleete record ', ( )=>{
+   it('can deleete record ', ( )=>{
     cy.get('.text-danger').eq(0).click({force:true})
     cy.wait(1000)
 
@@ -410,8 +411,8 @@ it('can deleete record ', ( )=>{
     })
   
 
-})
-it('can deleete record ', ( )=>{
+   })
+   it('can deleete record ', ( )=>{
     cy.get('.text-danger').eq(0).click({force:true})
     cy.wait(1000)
 
@@ -421,7 +422,8 @@ it('can deleete record ', ( )=>{
     })
   
 
-})
+   })
+    
 
 })
 

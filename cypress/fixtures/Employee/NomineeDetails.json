@@ -1,0 +1,20 @@
+{
+  "rows": [
+    {
+      "Name": "Raj",
+      "Address": "Ratnagiri",
+      "NomineeRelationWithMember": "Brother",
+      "AmountPaidToNomineeInPercentage": "20",
+      "DOB": "01/04/1993",
+      "NameAndAddressOfGuardian": "Rajendra, MIDC Main Rd, Indira Nagar, Turbhe, Navi Mumbai"
+    },
+    {
+      "Name": "Rani",
+      "Address": "Mumbai",
+      "NomineeRelationWithMember": "Sister",
+      "AmountPaidToNomineeInPercentage": "20",
+      "DOB": "15/09/2000",
+      "NameAndAddressOfGuardian": "Rakesh, Thane, Mumbai"
+    }
+  ]
+}

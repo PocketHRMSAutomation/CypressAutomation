@@ -287,7 +287,7 @@ describe('01_Setting', function () {
 
     })
 
-/*
+
     it('Add Leave - Sick Leave', function () {
         cy.visit(Cypress.env('url') + 'Settings/Employee/Index?module=organization&submodule=smtpsettings')
         cy.wait(1000)
@@ -321,7 +321,7 @@ describe('01_Setting', function () {
         cy.get(".toast-message").click({ force: true })
 
     })
-
+/*
     it('Add Leave - MATERNITY  LEAVE', function () {
         cy.visit(Cypress.env('url') + 'Settings/Employee/Index?module=organization&submodule=smtpsettings')
         cy.wait(1000)
@@ -353,7 +353,7 @@ describe('01_Setting', function () {
         })
         cy.get(".toast-message").click({ force: true })
     })
-    
+  */  
     it('Add Leave - Marriage leave', function () {
         cy.visit(Cypress.env('url') + 'Settings/Employee/Index?module=organization&submodule=smtpsettings')
         cy.wait(1000)
@@ -385,6 +385,6 @@ describe('01_Setting', function () {
         })
         cy.get(".toast-message").click({ force: true })
     })
-    */
+    
 })
 

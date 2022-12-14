@@ -71,12 +71,13 @@ describe('09_Family Details', function() {
 		  cy.get('#Profile_FamilyDetails').click({force:true})
 		  cy.get('#Profile_FamilyDetails').click()
 		  cy.get('#Profile_FamilyDetails').click({force:true})
-		  cy.wait(1000)
+		  cy.wait(3000)
 	})
 	
 	it('Verify Validation message -  Select Relation', function() {
 	
-		cy.get('[title="Add Family Details"]').eq(0).click({force: true})	
+		cy.get('[title="Add Family Details"]').eq(0).click({force: true})
+		cy.wait(2000)	
 		cy.get('[onclick="CheckValid();"]').click({force: true})
 		cy.wait(1000)
 		cy.get(".toast-message").invoke('text').then((text) => {
