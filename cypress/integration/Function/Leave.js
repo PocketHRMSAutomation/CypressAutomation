@@ -2,7 +2,6 @@
 
 class Leave {
 
-
 	verifyLeaveDetails(employeeID, EmployeeFirstName, EmployeeLastName, managerID,
 		ManagerFirstName, ManagerLastName, department, designation, employeeJoiningDate, todayDate,
 		leaveType, leaveTypeValue, balance, leaveFromDate, leaveToDate, leaveFromDayType,
@@ -578,8 +577,6 @@ class Leave {
 
 
 	}
-
-
 
 	verifyNotificationAtReliver(employeeID, EmployeeFirstName, EmployeeLastName, leaveFromDate, leaveToDate) {
 		const { softAssert, softExpect, softTrue } = chai;
